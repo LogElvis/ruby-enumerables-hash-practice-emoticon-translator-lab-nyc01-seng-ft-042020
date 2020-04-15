@@ -15,7 +15,6 @@ def load_library(path)
     lookup[:get_meaning][japanese] = word
     lookup[:get_emoticon][american] = japanese
   end
-
   lookup
 end
 
