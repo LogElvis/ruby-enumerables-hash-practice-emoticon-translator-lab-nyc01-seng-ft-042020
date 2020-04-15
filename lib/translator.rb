@@ -1,7 +1,6 @@
 require 'yaml'
 # require modules here
 
-def load_library
   # code goes here
 def load_library(yaml_file)
   response = {"get_meaning" => {}, "get_emoticon" => {}}
