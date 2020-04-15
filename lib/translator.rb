@@ -1,7 +1,6 @@
 require 'yaml'
 # require modules here
 
-  # code goes here
 def load_library(yaml_file)
   response = {"get_meaning" => {}, "get_emoticon" => {}}
   library = YAML.load_file(yaml_file)
@@ -12,8 +11,6 @@ def load_library(yaml_file)
   response
 end
 
-def get_japanese_emoticon
-  # code goes here
 def get_japanese_emoticon(yaml_file, emoticon)
   library = load_library(yaml_file)
   response = nil
@@ -29,8 +26,6 @@ def get_japanese_emoticon(yaml_file, emoticon)
   end
 end
 
-def get_english_meaning
-  # code goes here
 def get_english_meaning(yaml_file, emoticon)
   library = load_library(yaml_file)
   response = nil
