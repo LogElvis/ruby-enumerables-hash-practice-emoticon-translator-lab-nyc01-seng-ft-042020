@@ -1,35 +1,39 @@
-# require modules here
-require 'yaml'
-require 'pry'
+require "yaml"
+require "pry"
 
+def load_library
 def load_library(path)
   emoticons = YAML.load_file(path)
-  emoticon_hash = Hash.new
+  lookup = {}
+  lookup[:get_meaning] = {}
+  lookup[:get_emoticon] = {}
 
-  emoticon_hash["get_emoticon"] = Hash.new
-  emoticon_hash["get_meaning"] = Hash.new
+  emoticons.each do |word, pair|
+    japanese = pair[1]
+    american = pair[0]
 
-  emoticons.each do |english_word, emoticon_set|
-    emoticon_hash["get_emoticon"][emoticon_set.first] = emoticon_set.last
-    emoticon_hash["get_meaning"][emoticon_set.last] = english_word
+    lookup[:get_meaning][japanese] = word
+    lookup[:get_emoticon][american] = japanese
   end
-  emoticon_hash
+  lookup
 end
 
+def get_japanese_emoticon
 def get_japanese_emoticon(path, emoticon)
-  emoticon_hash = load_library(path)
-  result = emoticon_hash["get_emoticon"][emoticon]
-  if result == nil
-    result = "Sorry, that emoticon was not found" 
+  lookup = load_library(path)
+  if lookup[:get_emoticon][emoticon]
+    return lookup[:get_emoticon][emoticon]
+  else
+    return "Sorry, that emoticon was not found"
   end
-  result
 end
 
+def get_english_meaning
 def get_english_meaning(path, emoticon)
-  emoticon_hash = load_library(path)
-  result = emoticon_hash["get_meaning"][emoticon]
-  if result == nil
-    result = "Sorry, that emoticon was not found" 
+  lookup = load_library(path)
+  if lookup[:get_meaning][emoticon]
+    return lookup[:get_meaning][emoticon]
+  else
+    return "Sorry, that emoticon was not found"
   end
-  result
 end
