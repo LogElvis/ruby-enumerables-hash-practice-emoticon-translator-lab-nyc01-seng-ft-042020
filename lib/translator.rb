@@ -18,7 +18,7 @@ def load_library(path)
   lookup
 end
 
-def get_japanese_emoticon(path, emoticon)
+def get_japanese_emoticon
   lookup = load_library(path)
   if lookup[:get_emoticon][emoticon]
     return lookup[:get_emoticon][emoticon]
@@ -28,7 +28,6 @@ def get_japanese_emoticon(path, emoticon)
 end
 
 def get_english_meaning
-def get_english_meaning(path, emoticon)
   lookup = load_library(path)
   if lookup[:get_meaning][emoticon]
     return lookup[:get_meaning][emoticon]
