@@ -21,3 +21,22 @@ def load_library(path)
 end
 
 def get_japanese_emoticon
+def get_japanese_emoticon(path, emoticon)
+  lookup = load_library(path)
+  if lookup[:get_emoticon][emoticon]
+    return lookup[:get_emoticon][emoticon]
+  else
+    return "Sorry, that emoticon was not found"
+  end
+end
+
+def get_english_meaning
+  # code goes here
+def get_english_meaning(path, emoticon)
+  lookup = load_library(path)
+  if lookup[:get_meaning][emoticon]
+    return lookup[:get_meaning][emoticon]
+  else
+    return "Sorry, that emoticon was not found"
+  end
+end
